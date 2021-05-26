@@ -46,3 +46,80 @@ axios.post('/user', {
 
 
 2------------------------------------------------------
+
+创建实例
+const instance = axios.create({
+  baseURL: 'https://some-domain.com/api/',
+  timeout: 1000,
+  headers: {'X-Custom-Header': 'foobar'}
+});
+
+以下是实例所拥有的方法
+
+request(config)
+get(url[, config])
+delete(url[, config])
+head(url[, config])
+options(url[, config])
+post(url[, data[, config]])
+put(url[, data[, config]])
+patch(url[, data[, config]])
+config 会和创建实例时指定的 config 合并
+
+
+配置默认值
+axios 可以配置在每一个请求中生效的一些配置项的默认值
+全局的默认值
+axios.defaults.baseURL = 'https://api.example.com';
+axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+// Set config defaults when creating the instance
+const instance = axios.create({
+  baseURL: 'https://api.example.com'
+});
+// Alter defaults after instance has been created
+instance.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+// 使用由库提供的配置的默认值来创建实例
+// 此时超时配置的默认值是 `0`
+var instance = axios.create();
+// 覆写库的超时默认值
+// 现在，在超时前，所有请求都会等待 2.5 秒
+instance.defaults.timeout = 2500;
+// 为已知需要花费很长时间的请求覆写超时设置
+instance.get('/longRequest', {
+  timeout: 5000
+});
+
+3拦截器----------------------------------------------------------
+axios.interceptors.request 请求拦截器
+axios.interceptors.response 响应拦截器
+// 添加请求拦截器
+axios.interceptors.request.use(function (config) {
+  // 在发送请求之前做些什么
+  config.header["Token"] = "xxxx"
+  return config;
+}, function (error) {
+  // 对请求错误做些什么
+  return Promise.reject(error);
+});
+
+// 添加响应拦截器
+axios.interceptors.response.use(function (response) {
+  // 对响应数据做点什么
+  if (response.status === 200){
+    return response.data
+  } else {
+    return Promise.reject(new Error('error'))
+  }
+}, function (error) {
+  // 对响应错误做点什么
+  return Promise.reject(error);
+});
+
+如果想要取消拦截器，可以通过使用一个变量来接收设置拦截器时返回的实例，然后使用 eject 来取消拦截器
+
+const myInterceptor = axios.interceptors.request.use(function () {/*...*/});
+axios.interceptors.request.eject(myInterceptor);
+
+
+
