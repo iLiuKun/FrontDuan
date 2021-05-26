@@ -1,0 +1,11 @@
+1.Promise
+微任务。同步任务
+new Promise( function(resolve, reject) {...} /* executor */  )
+
+构建 Promise 对象时，需要传入一个 executor 函数，主要业务流程都在 executor 函数中执行。
+Promise构造函数执行时立即调用executor 函数， resolve 和 reject 两个函数作为参数传递给executor，resolve 和 reject 函数被调用时，分别将promise的状态改为fulfilled（完成）或rejected（失败）。一旦状态改变，就不会再变，任何时候都可以得到这个结果。
+在 executor 函数中调用 resolve 函数后，会触发 promise.then 设置的回调函数；而调用 reject 函数后，会触发 promise.catch 设置的回调函数。
+
+Promise 是用来管理异步编程的，它本身不是异步的，new Promise的时候会立即把executor函数执行，只不过我们一般会在executor函数中处理一个异步操作。
+https://juejin.cn/post/6844904132210655245
+Promise 采用了回调函数延迟绑定技术，在执行 resolve 函数的时候，回调函数还没有绑定，那么只能推迟回调函数的执行
