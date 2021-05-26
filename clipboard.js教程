@@ -1,0 +1,139 @@
+浏览器中复制文本到剪贴板的插件
+https://juejin.cn/post/6844903551819317261
+
+
+************从target复印目标内容*****************
+首先需要您需要通过传递DOM选择器，HTML元素或HTML元素列表来实例化它。
+
+new Clipboard('.btn');
+
+用一个元素当触发器来复制另一个元素的文本,data-clipboard-target属性后需要跟属性选择器
+<input id="foo" type="text" value="hello">
+<button class="btn" data-clipboard-action="copy" data-clipboard-target="#foo">Copy</button>
+
+<textarea id="bar">hello</textarea> 
+<button class="btn" data-clipboard-action="cut" data-clipboard-target="#bar">Cut</button>
+
+<div>hello_div</div>
+<button class="btn" data-clipboard-action="copy" data-clipboard-target="div">Copy</button>
+
+
+   <script>
+       // button的class的值
+        var clipboard = new Clipboard('.btn');
+        clipboard.on('success', function(e) {
+            console.log(e);
+        });
+
+        clipboard.on('error', function(e) {
+            console.log(e);
+        });
+    </script>
+
+
+
+***********通过function 要复印的内容*********************
+通过target的function复印内容
+通过target指定要复印的节点，这里返回舒值是‘hello’
+
+    <button class="btn">Copy_target</button>
+    <div>hello</div>
+
+    <script>
+    var clipboard = new Clipboard('.btn', {
+    // 通过target指定要复印的节点
+        target: function() {
+                   return document.querySelector('div');
+              }
+    });
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
+
+通过text的function复印内容
+text的function指定的复印内容，这里返回‘to be or not to be’
+
+ <button class="btn">Copy</button>
+ <script>
+    var clipboard = new Clipboard('.btn', {
+    // 点击copy按钮，直接通过text直接返回复印的内容
+        text: function() {
+            return 'to be or not to be';
+        }
+    });
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    
+    
+    ********************通过属性返回复印的内容******************
+    通过data-clipboard-text属性返回复印的内容
+    
+    单节点，通过id指定节点对象，并做为参数传送给Clipboard。这里的返回值的内容是data-clipboard-text的内容
+    // 通过id获取复制data-clipboard-text的内容 
+<div id="btn" data-clipboard-text="1">
+        <span>Copy</span>
+</div>
+
+<script>
+    var btn = document.getElementById('btn');
+    var clipboard = new Clipboard(btn);
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
+多节点，通过button返回所有button按钮，并做为参数传送给Clipboard。每个按钮被点击时，返回值的内容是其对应的data-clipboard-text的内容，分别是1，2，3
+//  多节点获取button的data-clipboard-text值
+ <button data-clipboard-text="1">Copy</button>
+    <button data-clipboard-text="2">Copy</button>
+    <button data-clipboard-text="3">Copy</button>
+<script>
+    var btns = document.querySelectorAll('button');
+    var clipboard = new Clipboard(btns);
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+    
+    多节点，通过class获取所有button按钮，并做为参数传送给Clipboard。每个按钮被点击时，返回值的内容是其对应的data-clipboard-text的内容，分别是1，2，3
+    //   通过class注册多个button，获取data-clipboard-text的值
+<button class="btn" data-clipboard-text="1">Copy</button>
+    <button class="btn" data-clipboard-text="2">Copy</button>
+    <button class="btn" data-clipboard-text="3">Copy</button>
+ <script>
+    var clipboard = new Clipboard('.btn');
+
+    clipboard.on('success', function(e) {
+        console.log(e);
+    });
+
+    clipboard.on('error', function(e) {
+        console.log(e);
+    });
+    </script>
+
+
+https://github.com/hryou0922/front/tree/master/web2/WebContent/page/plugin/clipboard
