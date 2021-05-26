@@ -1,0 +1,53 @@
+可以在网站改版后，使用它来引导用户展示新功能。https://blog.csdn.net/weixin_39520640/article/details/106494189
+
+1，突出单个元素，无弹窗
+this.$driver.highlight('#status');
+
+2，突出显示和弹出框
+可以使用弹出窗口在突出显示的元素旁边显示其他详细信息。
+ps：如果未指定位置或将其指定为auto，它将自动找到弹出框的合适位置并显示。
+ps：title与description可指定html。
+this.$driver.highlight({
+	element: '#status',
+    popover: {
+		title: '弹窗标题',//也可以使用HTML标签
+        description: '弹窗内容',//也可以使用HTML标签
+        position: 'bottom',//位置，可选值： left, left-center, left-bottom, top, top-center, top-right, right, right-center, right-bottom, bottom, bottom-center, bottom-right, mid-center
+        offset: 20,//位移大小
+    }
+});
+
+
+3、设置分步引导介绍
+this.$driver.defineSteps([
+	{
+		element: '#status1',
+        popover: {
+			title: '弹窗1',
+            description: 'Body of the popover',
+            position: 'left'
+        },
+        onNext: (e) => {
+	        console.log('转到第二步', e)
+        },
+    },
+    {
+	    element: '#status2',
+        popover: {
+	        title: '弹窗2',
+            description: 'Body of the popover',
+            position: 'top'
+        }
+    },
+    {
+	    element: '#status3',
+        popover: {
+	        title: '弹窗3',
+            description: 'Body of the popover',
+            position: 'right'
+        }
+    },
+]);
+this.$driver.start();
+
+
