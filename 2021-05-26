@@ -9,3 +9,51 @@ Promise构造函数执行时立即调用executor 函数， resolve 和 reject �
 Promise 是用来管理异步编程的，它本身不是异步的，new Promise的时候会立即把executor函数执行，只不过我们一般会在executor函数中处理一个异步操作。
 https://juejin.cn/post/6844904132210655245
 Promise 采用了回调函数延迟绑定技术，在执行 resolve 函数的时候，回调函数还没有绑定，那么只能推迟回调函数的执行
+
+
+2，view和component
+component是通用组件，view是界面
+
+
+2.1:  从layout开始：export default connect((state) => state.settings)(Main);
+return (
+    <Layout style={{ minHeight: "100vh" }}>
+      <Sider />
+      <Layout>
+        <Header />
+        {tagsView ? <TagsView /> : null}
+        <Content />
+        <RightPanel />
+      </Layout>
+    </Layout>
+  );
+ 
+ 
+2.2:   <Sider>  :
+
+return (
+    <Sider
+      collapsible
+      collapsed={sidebarCollapsed}
+      trigger={null}
+      style={{ zIndex: "10" }}
+    >
+      {sidebarLogo ? <Logo /> : null}
+      <Menu />
+    </Sider>
+  );
+  
+  
+Array.prototype.splice():  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+
+array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
+deleteCount 可选
+整数，表示要移除的数组元素的个数。
+由被删除的元素组成的一个数组。如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。
+
+
+
+
+
+
+
