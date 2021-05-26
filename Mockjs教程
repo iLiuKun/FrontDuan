@@ -1,4 +1,5 @@
 https://www.jianshu.com/p/5dfa9f0bb11e
+https://www.cnblogs.com/soyxiaobi/p/9846057.html
 生成随机数据，拦截 Ajax 请求
 
 Mock.mock('地址',{ "dataname|rule":{"对应的值"} }) 
@@ -30,3 +31,88 @@ Mock.mock('https://www.test.com',{
 
     })
 
+
+
+如何使用呢---------------------------------------------------------------------------
+
+for (let i = 0; i < count; i++) {
+  list.push(Mock.mock({
+    id: '@increment',
+    title: '@ctitle(5, 10)',
+    author: '@cname',
+    readings: '@integer(300, 5000)',
+    date: '@datetime'
+  }))
+}
+
+export default {
+  excelList: (_) => {
+    return {
+      code: 20000,
+      data: { items: list }
+    }
+  },
+};
+
+Mock.mock(/\/login/, "post", loginAPI.login);
+Mock.mock(/\/logout/, "post", loginAPI.logout);
+Mock.mock(/\/userInfo/, "post", loginAPI.userInfo);
+Mock.mock(/\/user\/list/, "get", loginAPI.getUsers);
+Mock.mock(/\/user\/delete/, "post", loginAPI.deleteUser);
+Mock.mock(/\/user\/edit/, "post", loginAPI.editUser);
+Mock.mock(/\/user\/validatUserID/, "post", loginAPI.ValidatUserID);
+Mock.mock(/\/user\/add/, "post", loginAPI.addUser);
+
+
+****************************使用数据占位符定义模拟接口返回值*************************
+{
+    'Boolean': '@boolean', // 随机生成布尔类型
+    'Natural': '@natural(1, 100)', // 随机生成1到100之间自然数
+    'Integer': '@integer(1, 100)', // 生成1到100之间的整数
+    'Float': '@float(0, 100, 0, 5)', // 生成0到100之间的浮点数,小数点后尾数为0到5位
+    'Character': '@character("aeiou")', // 在aeiou中，生成随机字符，不传参表示生成随机字符
+    'String': '@string( 2, 10)', // 生成2到10个字符之间的字符串
+    'Range': '@range(0, 10, 2)', // 生成一个数组，数组元素从0开始到10结束，间隔为2
+    'Date': '@date("yyyy yy y MM M dd d")', // 生成一个随机日期,可加参数定义日期格式，默认yyyy-mm-dd
+    'Color1': '@color', // 生成一个颜色16进制随机值
+    'Color2': '@rgb',   //生成一个颜色rgb随机值
+    'Paragraph':'@paragraph(2, 5)', //生成2至5个句子的文本
+    'Sentence':'@sentence(3, 5)',   //生成3至5个单词组成的一个句子
+    'World':'@word(3, 5)',          //生成3-5个字母组成的单词
+    'title':'@title(3,5)',          //生成3-5个单词组成的标题
+    'cParagraph':'@cparagraph(2, 5)', //生成2至5个句子的中文文本
+    'cSentence':'@csentence(3, 5)',   //生成3至5个词语组成的一个中文句子
+    'cWorld':'@cword(3, 5)',          //生成3-5个字组成的中文词语
+    'ctitle':'@ctitle(3,5)',          //生成3-5个词语组成的中文标题
+    'Name': '@name', // 生成姓名
+    'cName': '@cname', // 生成中文姓名
+    'Url': '@url', // 生成url地址
+    'Email':'@email',//生成邮箱
+    'Address': '@county(true)'， // 生成省 市 县组成的地址
+    'Guid':'@guid()',         //生成Guid值
+}
+
+*******************************核心PAPI*************************************
+Mock.mock(url, type, data)
+
+参数名	参数需求	参数描述	例子
+url	可选: URL 字符串或 URL 正则	拦截请求的地址	/mock
+type	可选	拦截Ajax类型	GET、POST
+template	可选: 可以是对象或字符串	生成数据的模板	{'data|1-10':['mock'] }、'@EMAIL'
+
+
+template可能有点难理解,我们试几个例子就一目了然了！
+//类型1: 名字|规则: 内容
+Mock.mock({'data|1-4': '哑巴'})
+
+//生成1-4个哑巴字符串
+{
+    data: "哑巴哑巴哑巴"
+    
+}
+
+//类型2: Mock自带模板
+Mock.mock('@province')
+
+//随机生成一个省份
+"上海"
