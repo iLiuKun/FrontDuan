@@ -1,0 +1,12 @@
+入口：https://ethan66.github.io/Redux-thunk%E6%95%99%E7%A8%8B/
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import reducer from './page/reducer' // 引入reducer模块
+
+const composeEnhancers =   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}):compose // compose的引入是未了使用redux dev tools插件
+const enhancer = composeEnhancers(applyMiddleware(thunk))
+const store = createStore( reducer, enhancer) // 创建数据存储仓库
+export default store
+
+
