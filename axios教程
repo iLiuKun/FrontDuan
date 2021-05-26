@@ -1,0 +1,48 @@
+1，-------------------------------------------
+Axios 提供了两种不同的形式来发送 HTTP 请求，
+一种是通过 axios() 方法，
+另一种是分别通过 axios 对象提供的与 HTTP 方法对应的方法来发起请求，如：  axios.get()  , axios.post() , axios.delete()
+
+
+// 发送 POST 请求
+axios({
+  method: 'post',
+  url: '/user/12345',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+});
+// 发送 POST 请求
+axios({
+  method: 'post',
+  url: '/user/12345',
+  data: {
+    firstName: 'Fred',
+    lastName: 'Flintstone'
+  }
+}).then(res => {
+    consloe.log(res)
+}).catch(err => {
+    console.log(err)
+})
+
+// 发送 GET 请求（默认的方法）
+axios('/user/12345');
+
+
+请求别名的使用
+axios 还为每一个 HTTP 的方法提供与之对应的方法来发送对应的请求
+
+发送post请求
+axios.post('/user', {
+  firstName: 'Fred',
+  lastName: 'Flintstone'
+}).then(function (response) {
+  console.log(response);
+}).catch(function (error) {
+  console.log(error);
+});
+
+
+2------------------------------------------------------
