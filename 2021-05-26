@@ -44,12 +44,25 @@ return (
   );
   
   
-Array.prototype.splice():  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
+3:
+3.1:  Array.prototype.splice():  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
 
 array.splice(start[, deleteCount[, item1[, item2[, ...]]]])
 deleteCount 可选
 整数，表示要移除的数组元素的个数。
 由被删除的元素组成的一个数组。如果只删除了一个元素，则返回只包含一个元素的数组。如果没有删除元素，则返回空数组。
+
+3.2: Array.prototype.reduce()   https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+
+reduce() 方法对数组中的每个元素执行一个由您提供的reducer函数(升序执行)，将其结果汇总为单个返回值
+reducer 函数接收4个参数:
+
+Accumulator (acc) (累计器)
+Current Value (cur) (当前值)
+Current Index (idx) (当前索引)
+Source Array (src) (源数组)
+
+您的 reducer 函数的返回值分配给累计器，该返回值在数组的每个迭代中被记住，并最后成为最终的单个结果值
 
 
 
