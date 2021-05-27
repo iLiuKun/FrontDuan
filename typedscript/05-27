@@ -1,0 +1,29 @@
+JavaScript语言的数据类型包括以下7种：
+·boolean（布尔值），也就是通常所用的true和false。·null，一个表明null值的特殊关键字。JavaScript是大小写敏感的，不能误写成Null或者NULL。·undefined，变量未定义时的属性。·number，表示数字，例如：1或者1.2。·string，表示字符串，例如：“Hello TypeScript”。·symbol一种数据类型（在ECMAScript6中新添加的类型），它的实例是唯一且不可改变的，我们会在后面单独讲解。·object（对象），通常而言，可以将对象视为存放值的命名容器。
+
+
+
+TypeScript的基本类型
+
+let a:boolean = true;
+支持模版字符串：let s:string = "hello,${name}"
+let ar: number[] = [1,2,3];
+let ar: Array<number> = [1,2,3];
+
+变量声明
+let name = 'xiaoming';  //自动推断
+const a = 5
+
+类型断言：
+let onestring: any = "aaaa";
+let stringlen:number = (<string>onestring).length;
+let stringlen:number = (onestring as string).length;
+
+泛型
+泛型函数：function hello<T>(arg:T):T{ teturn arg;}
+let output = hello<string>("baby");
+let output = helle("baby"); //自动类型推断
+
+泛型变量
+
+ 
