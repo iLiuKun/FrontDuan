@@ -24,6 +24,10 @@ let stringlen:number = (onestring as string).length;
 let output = hello<string>("baby");
 let output = helle("baby"); //自动类型推断
 
-泛型变量
+泛型变量 使用Array<T>
+
+枚举 enum
+
+symbol:用于
 
  
