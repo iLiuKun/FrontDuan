@@ -1,0 +1,19 @@
+如果你想要使用自定义的主题，那么需要使用 MuiThemeProvider 组件将样式注入到你的应用中。 但是，这是可选的；因为 Material-UI 组件带有默认主题。
+
+createMuiTheme(options, ...args) => theme
+
+1，Palette 调色板
+primary - 用于展示一个给用户的主要界面元素。 它是在您的应用屏幕和组件中显示最频繁的一个颜色。
+secondary - 用于展示一个给用户的次要界面元素。 它给予了更多的方法来强调和区分您的产品。 此颜色是可选的。
+error - 用于表示用户应该注意到的界面元素。
+warning - 用于呈现潜在的一些危险的操作或者重要的信息。
+info - 用于向用户呈现一些中立的且不一定重要的信息。
+success - 用于暗示一个用户触发的操作的成功完成。
+
+// 使用 `getContrastText()` 来最大化
+    // 背景和文本的对比度
+    contrastThreshold: 3,
+    
+  
+Typography 文字铸排
+https://material-ui.com/zh/customization/typography/
