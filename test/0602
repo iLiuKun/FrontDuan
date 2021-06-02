@@ -17,3 +17,19 @@ https://www.zhihu.com/people/bibi-68-76
 
 
 解决方案：安装@types/react和@types/react-dom
+
+
+https://juejin.cn/post/6844903896196841486
+虽然我们安装了react-router-dom，
+npm install --save react-router-dom
+或者
+yarn add react-router-dom
+复制代码但要想typscript认识react-router-dom，我们还要安装对应的声明文件
+npm i -D @types/react-router-dom
+or
+yarn add @types/react-router-dom -D
+
+作者：public4899
+链接：https://juejin.cn/post/6844903896196841486
+来源：掘金
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
