@@ -11,3 +11,12 @@ react-router-dom: 基于react-router，加入了在浏览器运行环境下的�
 2，https://segmentfault.com/a/1190000010686415
 npm install 在安装 npm 包时，有两种命令参数可以把它们的信息写入 package.json 文件，一个是npm install--save另一个是 npm install –save-dev，
 他们表面上的区别是--save 会把依赖包名称添加到 package.json 文件 dependencies 键下，--save-dev 则添加到 package.json 文件 devDependencies 键下，
+
+
+描述：react和react-dom都安装过了还是报错
+
+
+
+
+
+解决方案：安装@types/react和@types/react-dom
