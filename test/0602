@@ -1,1 +1,13 @@
 create-react-app my-app3 --template typescript
+
+https://segmentfault.com/a/1190000022443557
+1、react-router与react-router-dom是干什么的？
+react-router: 实现了路由的核心功能
+react-router-dom: 基于react-router，加入了在浏览器运行环境下的一些功能，
+例如：Link组件，会渲染一个a标签，Link组件源码a标签行; BrowserRouter和HashRouter组件，
+前者使用pushState和popState事件构建路由，后者使用window.location.hash和hashchange事件构建路由。
+
+
+2，https://segmentfault.com/a/1190000010686415
+npm install 在安装 npm 包时，有两种命令参数可以把它们的信息写入 package.json 文件，一个是npm install--save另一个是 npm install –save-dev，
+他们表面上的区别是--save 会把依赖包名称添加到 package.json 文件 dependencies 键下，--save-dev 则添加到 package.json 文件 devDependencies 键下，
