@@ -29,7 +29,5 @@ npm i -D @types/react-router-dom
 or
 yarn add @types/react-router-dom -D
 
-作者：public4899
-链接：https://juejin.cn/post/6844903896196841486
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+报错，Cannot find module '@material-ui/core/styles' or its corresponding type declarations
+不是库没引入，修改component的实现后恢复正常
