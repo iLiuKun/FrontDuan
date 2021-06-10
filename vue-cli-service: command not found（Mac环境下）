@@ -1,0 +1,4 @@
+踩坑记录：vue-cli-service: command not found（Mac环境下）
+
+// An highlighted block
+sudo rm -rf node_modules package-lock.json && npm install
