@@ -1,4 +1,32 @@
 # FrontDuan
+
+作者：Jaskey Lam
+链接：https://www.zhihu.com/question/20543196/answer/57757836
+来源：知乎
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+1.不知道自己高度和父容器高度的情况下, 利用绝对定位只需要以下三行：parentElement{
+        position:relative;
+    }
+
+ childElement{
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+
+ }2.若父容器下只有一个元素，且父元素设置了高度，则只需要使用相对定位即可    parentElement{
+        height:xxx;
+    }
+
+    .childElement {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }demo: Edit fiddle - JSFiddleFlex 布局：不考虑兼容老式浏览器的话，用Flex布局简单直观一劳永逸：parentElement{
+    display:flex;/*Flex布局*/
+    display: -webkit-flex; /* Safari */
+    align-items:center;/*指定垂直居中*/
+}demo: http://codepen.io/anon/pen/PZK
 ## https://www.cnblogs.com/wuqilang/p/12792544.html
 https://www.jiangruitao.com/webpack/webpack-environment/
 python3 -m http.server 4009
